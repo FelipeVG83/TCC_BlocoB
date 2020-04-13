@@ -1,0 +1,57 @@
+<h4 class="titulo"><i class="fas fa-user-friends"></i> Cadastro de Visitantes</h4>
+<div class="row">
+    <mat-form-field class="col-3">
+        <mat-label>Bloco</mat-label>
+        <mat-select [(value)]="Bloco" (selectionChange)="selecionaBloco()">
+            <mat-option [value]="item.id" *ngFor="let item of Blocos">{{item.Nome}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="col-3">
+        <input type="text" placeholder="Apartamento" matInput [formControl]="autoCompleteAptos" [matAutocomplete]="autoApto">
+        <mat-autocomplete #autoApto="matAutocomplete">
+            <mat-option *ngFor="let opcao of opcoesAptosFiltrados | async" [value]="opcao.NroApto" (onSelectionChange)="selecionarApto(opcao)">
+                {{opcao.NroApto}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="col-6">
+        <input type="text" placeholder="Morador" matInput [formControl]="autoCompleteMoradores" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let opcao of opcoesMoradoresFiltrados | async" [value]="opcao.Nome + ' ' + opcao.Sobrenome" (onSelectionChange)="selecionarMorador(opcao)">
+                {{opcao.Nome}} {{opcao.Sobrenome}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</div>
+<br />
+
+<div class="row">
+    <mat-form-field class="col-6">
+        <input matInput type="text" [(ngModel)]="Nome" placeholder="Nome" />
+    </mat-form-field>
+    <mat-form-field class="col-3">
+        <input matInput type="text" [(ngModel)]="Cpf" placeholder="CPF" mask="000.000.000/00" [dropSpecialCharacters]="false" />
+    </mat-form-field>
+    <mat-form-field class="col-2">
+        <input matInput type="text" [(ngModel)]="DataNascimento" placeholder="Data de Nascimento" mask="00/00/0000" [dropSpecialCharacters]="false" />
+    </mat-form-field>
+    <mat-form-field class="col-2">
+        <input matInput type="tel" [(ngModel)]="Telefone" placeholder="Telefone" mask="(00) 0000-0000" [dropSpecialCharacters]="false" />
+    </mat-form-field>
+</div>
+
+<div class="row">
+    <mat-form-field class="col-12">
+        <input matInput type="text" [(ngModel)]="Observacao" placeholder="Observacao" />
+    </mat-form-field>
+</div>
+<br />
+<div class="row">
+    <div class="col-12">
+        <button mat-raised-button color="primary" class="col-2 float-right" (click)="adicionarVisitante()">Adicionar</button>
+    </div>
+</div>
+
+<notifier-container></notifier-container>

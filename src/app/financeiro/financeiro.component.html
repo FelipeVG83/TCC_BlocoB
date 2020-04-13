@@ -1,0 +1,79 @@
+<h4 class="titulo"><i class="fas fa-hand-holding-usd"></i> Financeiro</h4>
+<div class="row full-height">
+	<div class="col-6 border-right">
+		<h5 class="col-12"><i class="fas fa-minus"></i> Gastos</h5>
+		<mat-form-field class="col-3">
+			<input matInput placeholder="Data" [(ngModel)]="Gasto.Data" mask="00/00/0000" [dropSpecialCharacters]="false">
+		</mat-form-field>
+		<mat-form-field class="col-5 noPadH">
+			<input matInput placeholder="Descrição" [(ngModel)]="Gasto.Descricao">
+		</mat-form-field>
+		<mat-form-field class="col-3">
+			<input matInput placeholder="Valor" [(ngModel)]="Gasto.Valor" mask="0*,00" [dropSpecialCharacters]="false">
+		</mat-form-field>
+		<button mat-mini-fab><i class="fas fa-plus" (click)="AdicionarGasto()"></i></button>
+
+
+		<table mat-table [dataSource]="dataSourceGastos" class="col-12 mat-elevation-z8">
+			<!-- Data Column -->
+			<ng-container matColumnDef="Data">
+				<th mat-header-cell *matHeaderCellDef> Data </th>
+				<td mat-cell *matCellDef="let element"> {{element.Data}} </td>
+			</ng-container>
+
+			<!-- Descricao Column -->
+			<ng-container matColumnDef="Descricao">
+				<th mat-header-cell *matHeaderCellDef> Descrição </th>
+				<td mat-cell *matCellDef="let element"> {{element.Descricao}} </td>
+			</ng-container>
+
+			<!-- Valor Column -->
+			<ng-container matColumnDef="Valor">
+				<th mat-header-cell *matHeaderCellDef> Valor </th>
+				<td mat-cell *matCellDef="let element"> {{element.Valor}} </td>
+			</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+		</table>
+
+	</div>
+	<div class="col-6">
+		<h5 class="col-12"><i class="fas fa-plus"></i> Ganhos</h5>
+		<mat-form-field class="col-3">
+			<input matInput placeholder="Data" [(ngModel)]="Ganho.Data" mask="00/00/0000" [dropSpecialCharacters]="false">
+		</mat-form-field>
+		<mat-form-field class="col-5 noPadH">
+			<input matInput placeholder="Descrição" [(ngModel)]="Ganho.Descricao">
+		</mat-form-field>
+		<mat-form-field class="col-3">
+			<input matInput placeholder="Valor" [(ngModel)]="Ganho.Valor" mask="0*,00" [dropSpecialCharacters]="false">
+		</mat-form-field>
+		<button mat-mini-fab><i class="fas fa-plus" (click)="AdicionarGanho()"></i></button>
+
+		<table mat-table [dataSource]="dataSourceGanhos" class="col-12 mat-elevation-z8">
+			<!-- Data Column -->
+			<ng-container matColumnDef="Data">
+				<th mat-header-cell *matHeaderCellDef> Data </th>
+				<td mat-cell *matCellDef="let element"> {{element.Data}} </td>
+			</ng-container>
+
+			<!-- Descricao Column -->
+			<ng-container matColumnDef="Descricao">
+				<th mat-header-cell *matHeaderCellDef> Descrição </th>
+				<td mat-cell *matCellDef="let element"> {{element.Descricao}} </td>
+			</ng-container>
+
+			<!-- Valor Column -->
+			<ng-container matColumnDef="Valor">
+				<th mat-header-cell *matHeaderCellDef> Valor </th>
+				<td mat-cell *matCellDef="let element"> {{element.Valor}} </td>
+			</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+		</table>
+	</div>
+</div>
+
+<notifier-container></notifier-container>

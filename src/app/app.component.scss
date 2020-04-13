@@ -1,0 +1,56 @@
+.noPadH {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.noPadRight {
+    padding-right: 0;
+}
+
+.noPadLeft {
+    padding-left: 0;
+}
+
+.maBottom {
+    margin-bottom: 1rem !important;
+}
+
+.maTop {
+    margin-top: 1rem !important;
+}
+
+.maRight {
+    margin-right: 1rem !important;
+}
+
+.titulo {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 2rem;
+}
+
+.subTitulo {
+    margin-bottom: 0.5rem;
+}
+
+.row {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+mat-radio-button {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.delete {
+    margin-left: 0.5rem;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.full-height {
+	height: 100% !important;
+}

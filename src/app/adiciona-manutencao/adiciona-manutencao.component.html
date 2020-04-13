@@ -1,0 +1,35 @@
+<h4 class="titulo">
+    <i class="fas fa-tools"></i> Cadastro de Manutenções</h4>
+<div class="row">
+    <mat-form-field class="col-5">
+        <input matInput type="text" placeholder="Assunto" [(ngModel)]="Assunto" />
+    </mat-form-field>
+    <mat-form-field class="col-3">
+        <mat-label>Categoria</mat-label>
+        <mat-select [(value)]="Categoria">
+            <mat-option value="Estrutural">Estrutural</mat-option>
+            <mat-option value="Elétrico">Elétrico</mat-option>
+            <mat-option value="Limpeza">Limpeza</mat-option>
+            <mat-option value="Pintura">Pintura</mat-option>
+            <mat-option value="Conserto">Conserto</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="col-12">
+        <input matInput type="text" placeholder="Local" [(ngModel)]="Local" />
+    </mat-form-field>
+    <mat-form-field class="col-12">
+        <input matInput type="text" placeholder="Descrição" [(ngModel)]="Descricao" />
+    </mat-form-field>
+
+    <div class="col-12">
+        <span>Adicionar imagem:</span>
+        <br/>
+        <input type="file" #imageInput accept="image/png, image/jpeg" (change)="processarFile(imageInput)">
+    </div>
+
+    <div class="col-12">
+        <button mat-raised-button color="primary" class="col-2 float-right" (click)="adicionaManutencao()">Adicionar</button>
+    </div>
+</div>
+
+<notifier-container></notifier-container>

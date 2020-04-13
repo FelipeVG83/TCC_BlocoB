@@ -1,0 +1,60 @@
+<h4 class="titulo"><i class="fas fa-car"></i> Veículos
+    <div class="float-right">
+        <button mat-raised-button color="primary" class="float-right" (click)="adicionar()">Adicionar</button>
+        <button mat-raised-button color="warn" class="float-right maRight" (click)="deletar()">Deletar</button>
+    </div>
+</h4>
+<div class="row">
+    <mat-form-field class="col-12">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" class="col-12 mat-elevation-z8">
+
+        <!-- Checkbox Column -->
+        <ng-container matColumnDef="Seleciona">
+            <th mat-header-cell *matHeaderCellDef>
+
+            </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+                </mat-checkbox>
+            </td>
+        </ng-container>
+
+        <!-- Bloco Column -->
+        <ng-container matColumnDef="Bloco">
+            <th mat-header-cell *matHeaderCellDef> Bloco </th>
+            <td mat-cell *matCellDef="let element"> {{infoBloco(element.IdApto)}} </td>
+        </ng-container>
+
+        <!-- Apto Column -->
+        <ng-container matColumnDef="Apto">
+            <th mat-header-cell *matHeaderCellDef> Apto </th>
+            <td mat-cell *matCellDef="let element"> {{infoApto(element.IdApto)}} </td>
+        </ng-container>
+
+        <!-- Marca Column -->
+        <ng-container matColumnDef="Marca">
+            <th mat-header-cell *matHeaderCellDef> Marca </th>
+            <td mat-cell *matCellDef="let element"> {{element.Marca}} </td>
+        </ng-container>
+
+        <!-- Modelo Column -->
+        <ng-container matColumnDef="Modelo">
+            <th mat-header-cell *matHeaderCellDef> Modelo </th>
+            <td mat-cell *matCellDef="let element"> {{element.Modelo}} </td>
+        </ng-container>
+
+        <!-- Cor Column -->
+        <ng-container matColumnDef="Cor">
+            <th mat-header-cell *matHeaderCellDef> Cor </th>
+            <td mat-cell *matCellDef="let element"> {{element.Cor}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+
+<notifier-container></notifier-container>

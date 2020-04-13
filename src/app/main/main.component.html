@@ -1,0 +1,59 @@
+<div id="wrapper">
+
+    <app-menu (mudaComponente)="mudarComponente($event)"></app-menu>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <div id="content">
+
+            <app-topper></app-topper>
+
+            <app-dashboard *ngIf="componente == 'dashboard'"></app-dashboard>
+            <app-adiciona-condominio *ngIf="componente == 'condominio/cadastrar'"></app-adiciona-condominio>
+            <app-lista-areas-comuns (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'areas-comuns/listar'"></app-lista-areas-comuns>
+            <app-adiciona-areas-comuns (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'areas-comuns/cadastrar'"></app-adiciona-areas-comuns>
+            <app-calendario *ngIf="componente == 'calendario'"></app-calendario>
+            <app-lista-carros (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'veiculos/listar'"></app-lista-carros>
+            <app-adiciona-carros (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'veiculos/cadastrar'"></app-adiciona-carros>
+            <app-lista-moradores (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'moradores/listar'"></app-lista-moradores>
+            <app-adiciona-moradores *ngIf="componente == 'moradores/cadastrar'"></app-adiciona-moradores>
+            <app-lista-votacao (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'votacao/listar'"></app-lista-votacao>
+            <app-adiciona-votacao *ngIf="componente == 'votacao/cadastrar'"></app-adiciona-votacao>
+            <app-lista-notificacao (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'notificacao/listar'"></app-lista-notificacao>
+            <app-adiciona-notificacao *ngIf="componente == 'notificacao/cadastrar'"></app-adiciona-notificacao>
+            <app-lista-inadimplentes (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'inadimplentes/listar'"></app-lista-inadimplentes>
+            <app-adiciona-inadimplentes (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'inadimplentes/cadastrar'"></app-adiciona-inadimplentes>
+            <app-lista-manutencao (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'manutencao/listar'"></app-lista-manutencao>
+            <app-adiciona-manutencao (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'manutencao/cadastrar'"></app-adiciona-manutencao>
+            <app-lista-visitantes (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'visitantes/listar'"></app-lista-visitantes>
+			<app-adiciona-visitantes (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'visitantes/cadastrar'"></app-adiciona-visitantes>
+			<app-financeiro  (mudaComponente)="mudarComponente($event)" *ngIf="componente == 'financeiro'"></app-financeiro>
+
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Bloco B - 2019</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

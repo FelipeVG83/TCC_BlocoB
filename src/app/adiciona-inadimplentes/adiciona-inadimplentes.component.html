@@ -1,0 +1,82 @@
+<h4 class="titulo">
+    <i class="fas fa-user-tag"></i> Cadastro de Inadimplentes</h4>
+
+<div class="row">
+    <mat-radio-group [(ngModel)]="Tipo">
+        <mat-radio-button value="1" selected>Morador</mat-radio-button>
+        <mat-radio-button value="2">Outro</mat-radio-button>
+    </mat-radio-group>
+</div>
+<div class="row" *ngIf="Tipo == '1'">
+    <mat-form-field class="col-3">
+        <mat-label>Bloco</mat-label>
+        <mat-select [(value)]="Bloco" (selectionChange)="selecionaBloco()">
+            <mat-option [value]="item.id" *ngFor="let item of Blocos">{{item.Nome}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="col-3">
+        <input type="text" placeholder="Apartamento" matInput [formControl]="autoCompleteAptos" [matAutocomplete]="autoApto">
+        <mat-autocomplete #autoApto="matAutocomplete">
+            <mat-option *ngFor="let opcao of opcoesAptosFiltrados | async" [value]="opcao.NroApto" (onSelectionChange)="selecionarApto(opcao)">
+                {{opcao.NroApto}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field class="col-6">
+        <input type="text" placeholder="Morador" matInput [formControl]="autoCompleteMoradores" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let opcao of opcoesMoradoresFiltrados | async" [value]="opcao.Nome + ' ' + opcao.Sobrenome" (onSelectionChange)="selecionarMorador(opcao)">
+                {{opcao.Nome}} {{opcao.Sobrenome}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</div>
+<div class="row" *ngIf="Tipo == '2'">
+    <mat-form-field class="col-6">
+        <input matInput type="text" placeholder="Nome" [(ngModel)]="Nome" />
+    </mat-form-field>
+    <mat-form-field class="col-6">
+        <input matInput type="text" placeholder="Sobrenome" [(ngModel)]="Sobrenome" />
+    </mat-form-field>
+    <mat-form-field class="col-3">
+        <input matInput type="text" [(ngModel)]="Rg" name="Rg" placeholder="RG" mask="00.000.000-0" [dropSpecialCharacters]="false" />
+    </mat-form-field>
+    <mat-form-field class="col-3">
+        <input matInput type="text" [(ngModel)]="Cpf" name="Cpf" placeholder="CPF" mask="000.000.000/00" [dropSpecialCharacters]="false" />
+    </mat-form-field>
+</div>
+
+<div class="row maTop">
+    <h4 class="titulo maBottom">Dívidas - R${{ Total | number:'1.2-2' }}</h4>
+    <div class="col-12">
+        <mat-form-field class="col-2 noPadLeft">
+            <input matInput type="text" placeholder="Data" [(ngModel)]="Data" mask="00/00/0000" [dropSpecialCharacters]="false" />
+        </mat-form-field>
+        <mat-form-field class="col-6 noPadLeft">
+            <input matInput type="text" placeholder="Descricao" [(ngModel)]="Descricao" />
+        </mat-form-field>
+        <mat-form-field class="col-2 noPadLeft">
+            <input matInput type="text" placeholder="Valor" [(ngModel)]="Valor" mask="0*,00" [dropSpecialCharacters]="false" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="col-1" (click)="adicionarOpcao()"><i class="fas fa-plus"></i></button>
+    </div>
+    <br/>
+    <div class="col-12">
+        <mat-list role="list">
+            <mat-list-item class="noPadH" role="listitem" *ngFor="let item of Dividas; let i = index">
+                <span class="col-2">{{item.Data | mask: '00/00/0000'}}</span>
+                <span class="col-5">{{item.Descricao}}</span>
+                <span class="col-2">{{item.Valor | number: '1.2-2' }}</span>
+                <i class="fas fa-minus delete" (click)="deleteItem(i)"></i></mat-list-item>
+        </mat-list>
+    </div>
+
+    <div class="col-12">
+        <button mat-raised-button color="primary" class="col-2 float-right" (click)="adicionarInadimplente()">Adicionar</button>
+    </div>
+</div>
+
+<notifier-container></notifier-container>

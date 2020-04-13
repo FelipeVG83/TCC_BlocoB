@@ -1,0 +1,107 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+            <i class="far fa-building"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Bloco <sup>B</sup></div>
+    </a>
+
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item" [ngClass]="{active: componenteSelecionado == 'dashboard'}">
+        <a class="nav-link" (click)="mudarComponente('dashboard')">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <li class="nav-item" [ngClass]="{active: componenteSelecionado == 'condominio/cadastrar'}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Condomínio</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" (click)="mudarComponente('condominio/cadastrar')">Cadastrar</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item" [ngClass]="{active: componenteSelecionado == 'moradores/listar'}">
+        <a class="nav-link" (click)="mudarComponente('moradores/listar')">
+            <i class="fas fa-fw fa-building"></i>
+            <span>Apartamentos</span>
+        </a>
+    </li>
+
+    <li class="nav-item" [ngClass]="{active: componenteSelecionado == 'visitantes/listar'}">
+        <a class="nav-link" (click)="mudarComponente('visitantes/listar')">
+            <i class="fas fa-user-friends"></i>
+            <span>Visitantes</span>
+        </a>
+    </li>
+
+    <li class="nav-item" [ngClass]="{active: componenteSelecionado == 'areas-comuns/listar'}">
+        <a class="nav-link" (click)="mudarComponente('areas-comuns/listar')">
+            <i class="fas fa-fw fa-birthday-cake"></i>
+            <span>Áreas Comuns</span>
+        </a>
+    </li>
+
+    <li class="nav-item" [ngClass]="{active: componenteSelecionado == 'notificacao/listar'}">
+        <a class="nav-link" (click)="mudarComponente('notificacao/listar')">
+            <i class="fas fa-fw fa-bell"></i>
+            <span>Avisos</span>
+        </a>
+    </li>
+
+    <li class="nav-item" [ngClass]="{active: componenteSelecionado == 'calendario'}">
+        <a class="nav-link" (click)="mudarComponente('calendario')">
+            <i class="fas fa-fw fa-calendar-alt"></i>
+            <span>Calendário</span>
+        </a>
+    </li>
+
+    <li class="nav-item" [ngClass]="{active: componenteSelecionado == 'veiculos/listar'}">
+        <a class="nav-link" (click)="mudarComponente('veiculos/listar')">
+            <i class="fas fa-fw fa-car"></i>
+            <span>Veículos</span>
+        </a>
+    </li>
+
+    <li class="nav-item" [ngClass]="{active: componenteSelecionado == 'inadimplentes/listar'}">
+        <a class="nav-link" (click)="mudarComponente('inadimplentes/listar')">
+            <i class="fas fa-user-tag"></i>
+            <span>Inadimplentes</span>
+        </a>
+    </li>
+
+    <li class="nav-item" [ngClass]="{active: componenteSelecionado == 'votacao/listar'}">
+        <a class="nav-link" (click)="mudarComponente('votacao/listar')">
+            <i class="fas fa-fw fa-vote-yea"></i>
+            <span>Votações</span>
+        </a>
+    </li>
+
+    <li class="nav-item" [ngClass]="{active: componenteSelecionado == 'manutencao/listar'}">
+        <a class="nav-link" (click)="mudarComponente('manutencao/listar')">
+            <i class="fas fa-tools"></i>
+            <span>Manutenções</span>
+        </a>
+	</li>
+	
+	<li class="nav-item" [ngClass]="{active: componenteSelecionado == 'financeiro'}">
+        <a class="nav-link" (click)="mudarComponente('financeiro')">
+            <i class="fas fa-tools"></i>
+            <span>Financeiro</span>
+        </a>
+    </li>
+
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+</ul>

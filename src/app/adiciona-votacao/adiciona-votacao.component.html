@@ -1,0 +1,49 @@
+<h4 class="titulo"><i class="fas fa-vote-yea"></i> Cadastro de Votação</h4>
+<div class="row">
+    <mat-form-field class="col-8">
+        <input matInput type="text" placeholder="Nome da votação" [(ngModel)]="nome" />
+    </mat-form-field>
+    <mat-form-field class="col-2">
+        <input type="text" matInput placeholder="Data Inicial" [(ngModel)]="dataInicial" ngbDatepicker #d="ngbDatepicker">
+        <button matSuffix class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+    </mat-form-field>
+
+    <mat-form-field class="col-2">
+        <input type="text" matInput placeholder="Data Final" [(ngModel)]="dataFinal" ngbDatepicker #d2="ngbDatepicker">
+        <button matSuffix class="btn btn-outline-secondary" (click)="d2.toggle()" type="button"><i class="far fa-calendar-alt"></i></button>
+    </mat-form-field>
+
+    <mat-form-field class="col-12">
+        <input matInput type="text" placeholder="Descrição" [(ngModel)]="descricao" />
+    </mat-form-field>
+
+    <br />
+    <div class="col-12">
+        <label>Tipo de votação</label>
+        <mat-radio-group (change)="onChangeOpcao($event)">
+            <mat-radio-button value="1" selected>Sim/Não</mat-radio-button>
+            <mat-radio-button value="2">Opções</mat-radio-button>
+            <mat-radio-button value="3">Texto livre</mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <div class="col-12" *ngIf="opcaoSelecionada == '2'">
+        <mat-form-field class="col-5 noPadLeft">
+            <input matInput type="text" placeholder="Opção" [(ngModel)]="opcao" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" class="col-1" (click)="adicionarOpcao()"><i class="fas fa-plus"></i></button>
+    </div>
+    <br/>
+    <div class="col-12">
+        <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let item of opcoes; let i = index">{{item}} <i class="fas fa-minus delete" (click)="deleteItem(i)"></i></mat-list-item>
+        </mat-list>
+    </div>
+
+    <div class="col-12">
+        <button mat-raised-button color="primary" class="col-2 float-right" (click)="adicionarVotacao()">Adicionar</button>
+    </div>
+</div>
+
+<notifier-container></notifier-container>

@@ -1,0 +1,77 @@
+<h4 class="titulo"><i class="fas fa-car"></i> Cadastro de Veículos</h4>
+<div class="row">
+    <mat-tab-group class="col-12" (selectedTabChange)="selecionarTab($event)">
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <h5>
+                    <i class="fas fa-car"></i> Automóveis
+                </h5>
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <h5>
+                    <i class="fas fa-motorcycle"></i> Motocicletas
+                </h5>
+            </ng-template>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <h5>
+                    <i class="fas fa-ellipsis-h"></i> Outros
+                </h5>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+    <div class="form-automoveis col-12">
+        <div class="row">
+            <mat-form-field class="col-3">
+                <mat-label>Bloco</mat-label>
+                <mat-select [(value)]="Bloco">
+                    <mat-option [value]="item.id" *ngFor="let item of Blocos">{{item.Nome}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="col-3">
+                <input matInput type="text" placeholder="Número do apartamento" [(ngModel)]="NoApto" />
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="col-4">
+                <input type="text" placeholder="Marca" aria-label="Number" matInput [formControl]="autoCompleteMarcas" [matAutocomplete]="marcas">
+                <mat-autocomplete #marcas="matAutocomplete">
+                    <mat-option *ngFor="let opcao of opcoesMarcasFiltradas | async" [value]="opcao.fipe_name" (onSelectionChange)="selecionarMarca(opcao)">
+                        {{opcao.fipe_name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field class="col-5">
+                <input type="text" placeholder="Modelo" aria-label="Number" matInput [formControl]="autoCompleteModelos" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let opcao of opcoesModelosFiltrados | async" [value]="opcao.fipe_name" (onSelectionChange)="selecionarModelo(opcao)">
+                        {{opcao.fipe_name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field class="col-3">
+                <mat-label>Cor</mat-label>
+                <mat-select [(ngModel)]="Cor">
+                    <mat-option *ngFor="let cor of opcoesCores" [value]="cor">
+                        {{cor}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="col-12">
+                <input matInput placeholder="Observação" [(ngModel)]="Observacao">
+            </mat-form-field>
+            <br />
+            <div class="col-12">
+                <button mat-raised-button color="primary" class="float-right" (click)="adicionarVeiculo('C')">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<notifier-container></notifier-container>

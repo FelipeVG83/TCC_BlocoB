@@ -1,0 +1,45 @@
+<h4 class="titulo"><i class="fas fa-birthday-cake"></i> Cadastro de Áreas Comuns</h4>
+<div class="row">
+    <mat-form-field class="col-12">
+        <input matInput type="text" placeholder="Nome do local" [(ngModel)]="Nome" />
+    </mat-form-field>
+
+    <mat-form-field class="col-12">
+        <input matInput type="text" placeholder="Descrição" [(ngModel)]="Descricao" />
+    </mat-form-field>
+
+    <mat-form-field class="col-4">
+        <mat-label>Funcionalidade</mat-label>
+        <mat-select [(value)]="Funcionalidade">
+            <mat-option value="SalaFestas">Salão de Festas</mat-option>
+            <mat-option value="SalaReunioes">Sala de Reuniões</mat-option>
+            <mat-option value="Coworking">Coworking</mat-option>
+            <mat-option value="Brinquedoteca">Brinquedoteca</mat-option>
+            <mat-option value="SalaoJogos">Salão de Jogos</mat-option>
+            <mat-option value="Quadra">Quadra</mat-option>
+            <mat-option value="Academia">Academia</mat-option>
+            <mat-option value="Churrasqueira">Churrasqueira</mat-option>
+            <mat-option value="Piscina">Piscina</mat-option>
+            <mat-option value="Outro">Outro</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="col-4">
+        <mat-label>Localização</mat-label>
+        <mat-select [(value)]="Localizacao">
+            <mat-option value="-LoGSInTl2sbaILrluBD">Teste A</mat-option>
+            <mat-option value="-LoGSInV7j9XsabywiVJ">Teste B</mat-option>
+            <mat-option value="-LoGSInWnDeefWU0ooso">Teste C</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-slide-toggle class="col-3 maTop" [(ngModel)]="Reservavel">Reservável</mat-slide-toggle>
+
+    <br />
+
+    <div class="col-12">
+        <button mat-raised-button color="primary" class="col-2 float-right" (click)="adicionarArea()">Adicionar</button>
+    </div>
+</div>
+
+<notifier-container></notifier-container>
